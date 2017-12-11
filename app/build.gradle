@@ -30,6 +30,8 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         playAccountConfig = playAccountConfigs.defaultAccountConfig
+        buildConfigField "String", "DOS_ACCESS_KEY", "\"${dos_access_key}\""
+        buildConfigField "String", "DOS_SECRET_KEY", "\"${dos_secret_key}\""
     }
     buildTypes {
         release {
@@ -43,9 +45,8 @@ android {
         debug {
             applicationIdSuffix ".debug"
             resValue "string", "app_name", "Tree Tracker(debug)"
-            buildConfigField "String", "GPS_ACCURACY", '"on"'
-            // Change this back to 'off' and use QA build instead
-            buildConfigField 'String', 'BASE_URL', '"http://174.138.107.11"'
+            buildConfigField "String", "GPS_ACCURACY", '"off"'
+            buildConfigField 'String', 'BASE_URL', '"http://dev.treetracker.org"'
             buildConfigField "String", "DB_PATH", '"/data/data/org.greenstand.android.TreeTracker.debug/databases/"'
         }
         dev {
