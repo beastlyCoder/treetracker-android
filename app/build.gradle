@@ -13,6 +13,20 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 apply plugin: 'com.github.triplet.play'
 
+
+def loadExtraProperties(String fileName) {
+    def props = new Properties()
+    props.load(new FileInputStream(fileName))
+
+    props.each { key, val ->
+        project.setProperty(key, val)
+    }
+}
+
+
+loadExtraProperties("treetracker.keys.properties")
+
+
 android {
     compileSdkVersion 25
     buildToolsVersion "26.0.2"
@@ -109,3 +123,4 @@ play {
     track = 'beta' // or 'rollout' or 'production' or 'alpha'
 }
 //apply plugin: 'com.google.gms.google-services'
+
