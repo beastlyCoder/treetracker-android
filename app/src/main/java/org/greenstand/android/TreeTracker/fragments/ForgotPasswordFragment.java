@@ -18,7 +18,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.greenstand.android.TreeTracker.network.NetworkUtilities;
 import org.greenstand.android.TreeTracker.R;
 
 import org.apache.http.HttpResponse;
@@ -151,7 +150,7 @@ public class ForgotPasswordFragment extends Fragment implements OnClickListener 
 			}  
 	  
 			se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-	        
+	        /*
 			post = new HttpPost(NetworkUtilities.FORGOT_PASSWORD_URL);
 	        post.setEntity(se);
 	        post.setHeader("Accept-Charset","utf-8");
@@ -192,7 +191,7 @@ public class ForgotPasswordFragment extends Fragment implements OnClickListener 
 				e.printStackTrace();
 			}
 		
-			
+			*/
 	        
 	        return rsp;
 		}
