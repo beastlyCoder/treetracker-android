@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+                android:id="@+id/logo_greenstand"
+                android:contentDescription="@string/greenstand_welcome_text"
+                android:layout_width="@dimen/logo_width"
+                android:layout_height="157dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo"
+                android:layout_marginTop="@dimen/twenty_eight_dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_margin="8dp"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="28dp"
+            android:layout_width="match_parent"
+            android:hint="@string/first_name_hint"
+            android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signupFirstNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/person_black"
+                    android:drawableStart="@drawable/person_black"
+                    android:inputType="textPersonName"
+                    android:imeOptions="actionNext"
+                    android:drawablePadding="16dp"
+                    />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:hint="@string/last_name_hint"
+            android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signupLastNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/person_black"
+                    android:drawableStart="@drawable/person_black"
+                    android:inputType="textPersonName"
+                    android:imeOptions="actionNext"
+                    android:drawablePadding="16dp"
+                    />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:hint="@string/organization_text_hint"
+            android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signupOrganizationEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/people"
+                    android:drawableStart="@drawable/people"
+                    android:inputType="textPersonName"
+                    android:imeOptions="actionDone"
+                    android:drawablePadding="16dp"
+                    android:text="@string/organization_pre_fill"
+                    />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+                android:id="@+id/signUpFragmentButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/nineteen_dp"
+                style="@style/NewButtonStyle"
+                android:text="@string/signup_button_titile"/>
+
+    </LinearLayout>

@@ -1,0 +1,99 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+
+
+  before_all do |lane, options|
+    ensure_git_status_clean(show_uncommitted_changes: true)
+  end
+
+
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Submit a new Greenstand Beta Build to Crashlytics Beta"
+  lane :beta do
+  
+    bump_version_code()
+
+    git_commit(path: "./app/build.gradle", message: "Version Bump")
+
+    gradle(task: "clean assembleGreenstandDebug")
+    crashlytics(groups: "all-testers")
+  
+    slack(message: "A new Greenstand Beta Build has been released on Fabric",
+        default_payloads: ['git_branch'])
+
+    slack(message: "A new Greenstand Beta Build has been released on Fabric",
+        slack_url: ENV["SLACK_URL_QC”],
+        default_payloads: ['git_branch'])
+  
+  end
+
+
+  desc "Submit a new JustDigIt Beta Build to Crashlytics Beta"
+  lane :justdigit_beta do
+  
+    bump_version_code()
+
+    git_commit(path: "./app/build.gradle", message: "Version Bump")
+
+    gradle(task: "clean assembleJustdigitDebug")
+    crashlytics(groups: "all-testers")
+
+    slack(message: "A new JustDigIt Beta Build has been released on Fabric",
+        default_payloads: ['git_branch'])
+
+    slack(message: "A new JustDigIt Beta Build has been released on Fabric",
+        slack_url: ENV["SLACK_URL_QC”],
+        default_payloads: ['git_branch'])
+  
+  end
+
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+
+    bump_version_code()
+
+    git_commit(path: "./app/build.gradle", message: "Release to PLay Store: Version Bump")
+
+    add_git_tag()
+
+    gradle(task: "clean assembleGreenstandRelease")
+    upload_to_play_store
+
+  end
+
+  desc "Bump version code"
+  lane :bump_version_code do
+    path = '../app/build.gradle'
+    re = /versionCode\s+(\d+)/
+
+    s = File.read(path)
+    versionCode = s[re, 1].to_i
+    s[re, 1] = (versionCode + 1).to_s
+
+    f = File.new(path, 'w')
+    f.write(s)
+    f.close
+  end
+end
+

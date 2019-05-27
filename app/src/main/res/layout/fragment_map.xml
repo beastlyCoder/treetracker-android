@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_map"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/mapUserImage"
+        android:layout_width="@dimen/hundred_dim"
+        android:layout_height="@dimen/hundred_dim"
+        android:layout_gravity="top|start"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        tools:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <LinearLayout
+        android:id="@+id/fragment_map_gps_accuracy_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_eight"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/fragmentMapGpsAccuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/gps_accuracy_double_colon"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_twenty" />
+
+        <TextView
+            android:id="@+id/fragmentMapGpsAccuracyValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_twenty"
+            tools:text="@string/gps_accuracy_length" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addTreeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:text="@string/add_tree"
+        style="@style/NewButtonStyle"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_map_gps_accuracy_layout"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
